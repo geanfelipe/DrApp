@@ -1,0 +1,19 @@
+<ion-view view-title="Consultas do Dia" can-swipe-back="true">
+
+    <ion-content>
+
+        <ion-list>
+
+            <ion-item ng-repeat="paciente in pacientes" class="item-thumbnail-left">
+
+                <img src="img/ionic.png">
+                <h2>{{paciente.nomePaciente}}</h2>
+                <p>{{paciente.descricao}}</p>
+
+            </ion-item>
+
+        </ion-list>
+
+    </ion-content>
+
+</ion-view>
