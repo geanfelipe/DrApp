@@ -2,16 +2,28 @@
  * Created by Desenvolvimento on 04/08/2015.
  */
 
-angular.module('controller', ['ui.router', 'mwl.calendar'])
+angular.module('controller', ['ui.router', 'calendar'])
+
+    .config(function () {
+
+        moment.locale('pt-br');
+
+    })
 
     .controller('HomeController', function ($scope, $state) {
 
+        var today = function () {
+
+            var date = new Date();
+            var dataFormatada = (date.getMonth()+1) + "/" + date.getDay() + "/" + date.getFullYear();
+
+            console.log(dataFormatada);
+            return dataFormatada;
+        };
+
         $scope.calendarView = "month";
 
-        $scope.today = function () {
-            var date = new Date();
-            return date.getMonth() + "/" + date.getDay() + "/" + date.getYear();
-        };
+        $scope.calendarDay = today();
 
         //TODO: Carregar as consultas do servidor.
         $scope.consultas = [
