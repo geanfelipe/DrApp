@@ -2,19 +2,31 @@
  * Created by Desenvolvimento on 04/08/2015.
  */
 
-angular.module('controller', ['ui.router'])
+angular.module('controller', ['ui.router', 'mwl.calendar'])
 
-    .controller('HomeController', function ($state) {
+    .controller('HomeController', function ($scope, $state) {
+
+        $scope.calendarView = "month";
+
+        $scope.today = function () {
+            var date = new Date();
+            return date.getMonth() + "/" + date.getDay() + "/" + date.getYear();
+        };
+
+        //TODO: Carregar as consultas do servidor.
+        $scope.consultas = [
+
+        ];
 
         //Rodar o fullcalendar.js
-        $(".fullcalendar").fullCalendar({
+        $scope.calendarConfiguration = {
             height: "auto",
             titleFormat: "MMM/YYYY",
 
             dayClick: function () {
                 $state.go('schedule');
             }
-        });
+        };
 
     })
 
