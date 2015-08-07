@@ -12,18 +12,9 @@ angular.module('controller', ['ui.router', 'calendar'])
 
     .controller('HomeController', function ($scope, $state) {
 
-        var today = function () {
-
-            var date = new Date();
-            var dataFormatada = (date.getMonth()+1) + "/" + date.getDay() + "/" + date.getFullYear();
-
-            console.log(dataFormatada);
-            return dataFormatada;
-        };
-
         $scope.calendarView = "month";
 
-        $scope.calendarDay = today();
+        $scope.calendarDay = moment();
 
         //TODO: Carregar as consultas do servidor.
         $scope.consultas = [

@@ -12,7 +12,7 @@ angular.module("calendar", [])
 
         return {
             restrict: 'E',
-            template: "pages/template-calendar.html",
+            templateUrl: "pages/template-calendar.html",
             scope: {
                 selected: "="
             },
