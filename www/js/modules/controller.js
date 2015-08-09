@@ -12,8 +12,6 @@ angular.module('controller', ['ui.router', 'calendar'])
 
     .controller('HomeController', function ($scope, $state) {
 
-        $scope.calendarView = "month";
-
         $scope.calendarDay = moment();
 
         //TODO: Carregar as consultas do servidor.
@@ -21,14 +19,8 @@ angular.module('controller', ['ui.router', 'calendar'])
 
         ];
 
-        //Rodar o fullcalendar.js
-        $scope.calendarConfiguration = {
-            height: "auto",
-            titleFormat: "MMM/YYYY",
-
-            dayClick: function () {
-                $state.go('schedule');
-            }
+        $scope.dayClick = function (day) {
+            $state.go('schedule');
         };
 
     })

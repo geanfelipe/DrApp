@@ -14,7 +14,8 @@ angular.module("calendar", [])
             restrict: 'E',
             templateUrl: "pages/template-calendar.html",
             scope: {
-                selected: "="
+                selected: "=",
+                onDayClick: "="
             },
             link: function (scope) {
                 scope.selected = _removeTime(scope.selected || moment());
@@ -26,9 +27,13 @@ angular.module("calendar", [])
 
                 _buildMonth(scope, start, scope.month);
 
-                scope.select = function (day) {
-                    scope.selected = day.date;
-                };
+                if (scope.onDayClick) {
+                    scope.select = scope.onDayClick;
+                } else {
+                    scope.select = function (day) {
+                        scope.selected = day.date;
+                    };
+                }
                 
                 scope.next = function () {
                     var next = scope.month.clone();
