@@ -2,7 +2,7 @@
  * Created by Desenvolvimento on 04/08/2015.
  */
 
-angular.module('controller', ['ui.router', 'calendar'])
+angular.module('controller', ['ui.router', 'calendar', 'ionic'])
 
     .config(function () {
 
@@ -35,6 +35,21 @@ angular.module('controller', ['ui.router', 'calendar'])
             nomePaciente: "Sicrano de Tal",
             descricao: "Primeira consulta."
         }];
+
+    })
+
+    .controller('LoginController', function($scope, $state, $ionicPopup) {
+
+        $scope.data = {};
+
+        $scope.login = function () {
+            $http.post("").then(function (data) {
+                //Sucesso
+            }, function (data) {
+                //Fracasso
+            });
+            console.log("Login: user = " + $scope.data.login + ", senha = " + $scope.data.senha);
+        }
 
     })
 

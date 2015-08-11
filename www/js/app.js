@@ -13,6 +13,11 @@ angular.module('starter', ['ionic', 'controller'])
                 templateUrl: "pages/homePage.html",
                 controller: "HomeController"
             })
+            .state('login', {
+                url: '/login',
+                templateUrl: "pages/login.html",
+                controller: "LoginController"
+            })
             .state('schedule', {
                 url: '/schedule',
                 templateUrl: "pages/schedule.html",
