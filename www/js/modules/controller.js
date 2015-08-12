@@ -38,15 +38,24 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic'])
 
     })
 
-    .controller('LoginController', function($scope, $state, $ionicPopup) {
+    .controller('LoginController', function($scope, $http, $state, $ionicPopup) {
 
         $scope.data = {};
 
         $scope.login = function () {
-            $http.post("").then(function (data) {
+            $http.post("http://httpbin.org/status/401").then(function (data) {
+
                 //Sucesso
+                $state.go("home");
+
             }, function (data) {
+
                 //Fracasso
+                var popup = $ionicPopup.alert({
+                    title: "Erro no login",
+                    template: "Usu&aacute;rio ou senha incorretos."
+                });
+
             });
             console.log("Login: user = " + $scope.data.login + ", senha = " + $scope.data.senha);
         }
