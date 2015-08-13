@@ -43,7 +43,12 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic'])
         $scope.data = {};
 
         $scope.login = function () {
-            $http.post("http://httpbin.org/status/401").then(function (data) {
+
+            var headers = {
+                authorization : "Basic " + btoa($scope.data.login + ":" + $scope.data.senha)
+            };
+
+            $http.post("http://localhost:8080/drq-server/rest/login", $scope.data, {headers:headers}).then(function (data) {
 
                 //Sucesso
                 $state.go("home");
@@ -57,7 +62,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic'])
                 });
 
             });
-            console.log("Login: user = " + $scope.data.login + ", senha = " + $scope.data.senha);
         }
 
     })
