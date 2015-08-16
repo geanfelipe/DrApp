@@ -2,7 +2,7 @@
  * Created by Desenvolvimento on 04/08/2015.
  */
 
-angular.module('controller', ['ui.router', 'calendar', 'ionic'])
+angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.core', 'ionic.service.push'])
 
     .config(function () {
 
@@ -38,7 +38,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic'])
 
     })
 
-    .controller('LoginController', function($scope, $http, $state, $ionicPopup) {
+    .controller('LoginController', function($scope, $http, $state, $ionicPopup, $ionicUser, $ionicPush) {
 
         $scope.data = {};
 
@@ -51,7 +51,39 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic'])
             $http.post("http://localhost:8080/drq-server/rest/login", $scope.data, {headers:headers}).then(function (data) {
 
                 //Sucesso
-                $state.go("home");
+
+                var user = $ionicUser.get();
+                if (!user.user_id) {
+                    //TODO: O ID deve vir do servidor, para garantir que o mesmo usuario possui o mesmo id em diferentes aplicações.
+                    user.user_id = $ionicUser.generateGUID();
+                }
+
+                //TODO: Adicionar os dados do usuário, lidos do servidor.
+                angular.extend(user, {
+                    nome: "Usuário",
+                    email: "email@drq.com.br"
+                });
+
+                $ionicUser.identify(user).then(function () {
+
+                    $ionicPush.register({
+                        canShowAlert: true,
+                        canSetBadge: true,
+                        canPlaySound: true,
+                        canRunActionsOnWake: true,
+                        onNotification: function (notification) {
+
+                            console.log(notification);
+                            return true;
+
+                        }
+                    });
+
+                    $state.go("home");
+
+                });
+
+
 
             }, function (data) {
 
