@@ -10,7 +10,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     })
 
-    .controller('HomeController', function ($scope, $state) {
+    .controller('HomeController', function ($scope, $state, $rootScope) {
 
         $scope.calendarDay = moment();
 
@@ -22,6 +22,10 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         $scope.dayClick = function (day) {
             $state.go('schedule');
         };
+
+        $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
+            console.log('Got token', data.token, data.platform);
+        });
 
     })
 
@@ -67,7 +71,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 $ionicUser.identify(user).then(function () {
 
                     $ionicPush.register({
-                        canShowAlert: true,
+                        canShowAlert: false,
                         canSetBadge: true,
                         canPlaySound: true,
                         canRunActionsOnWake: true,
@@ -88,7 +92,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             }, function (data) {
 
                 //Fracasso
-                var popup = $ionicPopup.alert({
+                $ionicPopup.alert({
                     title: "Erro no login",
                     template: "Usu&aacute;rio ou senha incorretos."
                 });
