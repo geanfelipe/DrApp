@@ -20,7 +20,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         ];
 
         $scope.dayClick = function (day) {
-            $state.go('schedule');
+            $state.go('consultas');
         };
 
         $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
@@ -29,7 +29,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     })
 
-    .controller('ScheduleController', function ($scope) {
+    .controller('ConsultasController', function ($scope) {
 
         //Dados de teste
         $scope.pacientes = [{
@@ -98,8 +98,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 });
 
             });
-        }
+        };
 
-    })
+    }) 
 
 ;

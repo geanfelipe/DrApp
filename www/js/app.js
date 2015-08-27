@@ -11,17 +11,17 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push','ng
             .state('home', {
                 url: '/',
                 templateUrl: "pages/homePage.html",
-                controller: "HomeController"
+                controller: "HomeController"  
             })
             .state('login', {
                 url: '/login',
                 templateUrl: "pages/login.html",
                 controller: "LoginController"
             })
-            .state('schedule', {
-                url: '/schedule',
-                templateUrl: "pages/schedule.html",
-                controller: "ScheduleController"
+            .state('consultas', {
+                url: '/consultas',
+                templateUrl: "pages/consultasAgendadas.html",
+                controller: "ConsultasController"
             })
         ;
 
