@@ -32,15 +32,40 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
     .controller('ConsultasController', function ($scope) {
 
         //Dados de teste
-        $scope.pacientes = [{
-            nomePaciente: "Fulano de Tal",
-            descricao: "Retorno."
-        }, {
-            nomePaciente: "Sicrano de Tal",
-            descricao: "Primeira consulta."
-        }];
+        $scope.consultas = [{
+            id: "1",
+            data: "21/09/2015",
+            horarioInicial:"10:00",
+            horarioTermino:"10:59",
+            local:"Hospital da Unimed",
+            endereco:"Rua Odilon Gomes De Lima ",
+            bairro:"Capim Macio - 59000-370",
+            medico:"Dra. Luciana Raquel",
+            especialidade:"Ginecologia",
+            logo:"img/unimed.png"
 
+        }, {
+            id:"2",
+            data: "25/12/2015",
+            horarioInicial:"16:00",
+            horarioTermino:"16:59",
+            local:"Hospital da Unimed",
+            endereco:"Rua Rodolfo Garcia",
+            bairro:"Lagoa Nova - 59000-120",
+            medico:"Dr. João Da Silva",
+            especialidade:"Clinico geral",
+            logo:"img/unimed.png"
+        }];
+       
     })
+
+    .controller('InformacaoDeConsultaController',['$scope','$controller','$routeParams',function($scope,$controller,$routeParams){
+        
+        /* é um decorator que torna comum as variaveis de escopo do ConsultasController controller  */
+        $controller('ConsultasController',{$scope: $scope});
+        $scope.detalhes = $scope.consultas[0];
+        console.log($routeParams);
+    }])
 
     .controller('LoginController', function($scope, $http, $state, $ionicPopup, $ionicUser, $ionicPush) {
 

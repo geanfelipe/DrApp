@@ -1,19 +1,18 @@
-<ion-view view-title="Consultas do Dia" can-swipe-back="true">
+<ion-view can-swipe-back="true">
+	<ion-nav-title>Consultas Agendadas <a class="ion-plus-round" ></a></ion-nav-title>
 
     <ion-content>
 
-        <ion-list>
+       <div class="logo"><img src="img/unimed.png"></div>
 
-            <ion-item ng-repeat="paciente in pacientes" class="item-thumbnail-left">
+        <ion-item ng-repeat="consulta in consultas" >
 
-                <img src="img/ionic.png">
-                <h2>{{paciente.nomePaciente}}</h2>
-                <p>{{paciente.descricao}}</p>
+            <h2><a href="consultas/{{consulta.id}}">{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}}  - {{consulta.local}}</a></h2>
+            <p>{{consulta.medico}} , {{consulta.especialidade}}</p>
+            <p>{{consulta.endereco}}</p><p>{{consulta.bairro}}</p>
 
-            </ion-item>
-
-        </ion-list>
-
+        </ion-item>
+        
     </ion-content>
 
 </ion-view>

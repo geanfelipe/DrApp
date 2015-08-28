@@ -23,6 +23,11 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push','ng
                 templateUrl: "pages/consultasAgendadas.html",
                 controller: "ConsultasController"
             })
+            .state('detalhesConsulta', {
+                url: '/consultas/:id',
+                templateUrl: "pages/detalhesConsultas.html",
+                controller: "InformacaoDeConsultaController"
+            })
         ;
 
         $urlRouterProvider.otherwise("/");
