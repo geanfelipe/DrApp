@@ -1,0 +1,31 @@
+<ion-view can-swipe-back="true">
+	<ion-nav-title>Detalhes De Agendamento</ion-nav-title>
+
+	<ion-content>
+		<img ng-src="{{detalhes.logo}}">
+		<div class="list">
+			<div class="item">
+				<h3>Especialidade</h3>	
+				<h2 class="detalhe">{{detalhes.especialidade}}</h2>
+			</div>
+			<div class="item">
+				<h3>Data / Hora</h3>
+				<h2 class="detalhe">{{detalhes.data}} , {{detalhes.horarioInicial}}Hr</h2>
+			</div>
+			<div class="item">
+				<h3>Local de Atendimento</h3>	
+				<h2 class="detalhe">{{detalhes.local}}</h2>
+				<h2 class="detalhe">{{detalhes.endereco}}</h2>
+				<h2 class="detalhe">{{detalhes.bairro}}</h2>
+			</div>
+			<div class="item">
+				<h3>Médico</h3>	
+				<h2 class="detalhe">{{detalhes.medico}}</h2>
+			</div>
+			<div class="item">
+				<h3>Tempo Estimado Até Atendimento</h3>	
+				<h2 class="detalhe">15 Horas, 50 min</h2>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
