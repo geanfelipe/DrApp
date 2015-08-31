@@ -24,9 +24,19 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push','ng
                 controller: "ConsultasController"
             })
             .state('detalhesConsulta', {
-                url: '/consultas/:id',
+                url: '/consultas/:id', 
                 templateUrl: "pages/detalhesConsultas.html",
                 controller: "InformacaoDeConsultaController"
+            })
+            .state('agendamento', {
+                url: '/agendar', 
+                templateUrl: "pages/agendar.html",
+                controller: "AgendamentoController"
+            })
+            .state('agendamentoEspecialidade', {
+                url: '/agendar/:especialidade', 
+                templateUrl: "pages/agendamentoEspecialidade.html",
+                controller: "agendamentoEspecialidade"
             })
         ;
 

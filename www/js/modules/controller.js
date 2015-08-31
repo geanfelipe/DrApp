@@ -29,42 +29,55 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     })
 
-    .controller('ConsultasController', function ($scope) {
+    .controller('ConsultasController',function ($scope) {
+    
+            //Dados de teste
+            $scope.consultas = [{
+                id: "1",
+                data: "21/09/2015",
+                horarioInicial:"10:00",
+                horarioTermino:"10:59",
+                local:"Hospital da Unimed",
+                endereco:"Rua Odilon Gomes De Lima ",
+                bairro:"Capim Macio - 59000-370",
+                medico:"Dra. Luciana Raquel",
+                especialidade:"Ginecologia",
+                logo:"img/unimed.png"
+    
+            }, {
+                id:"2",
+                data: "25/12/2015",
+                horarioInicial:"16:00",
+                horarioTermino:"16:59",
+                local:"Hospital da Unimed",
+                endereco:"Rua Rodolfo Garcia",
+                bairro:"Lagoa Nova - 59000-120",
+                medico:"Dr. João Da Silva",
+                especialidade:"Clinico geral",
+                logo:"img/unimed.png"
+            }];
+           
+        })
 
-        //Dados de teste
-        $scope.consultas = [{
-            id: "1",
-            data: "21/09/2015",
-            horarioInicial:"10:00",
-            horarioTermino:"10:59",
-            local:"Hospital da Unimed",
-            endereco:"Rua Odilon Gomes De Lima ",
-            bairro:"Capim Macio - 59000-370",
-            medico:"Dra. Luciana Raquel",
-            especialidade:"Ginecologia",
-            logo:"img/unimed.png"
-
-        }, {
-            id:"2",
-            data: "25/12/2015",
-            horarioInicial:"16:00",
-            horarioTermino:"16:59",
-            local:"Hospital da Unimed",
-            endereco:"Rua Rodolfo Garcia",
-            bairro:"Lagoa Nova - 59000-120",
-            medico:"Dr. João Da Silva",
-            especialidade:"Clinico geral",
-            logo:"img/unimed.png"
-        }];
-       
-    })
-
-    .controller('InformacaoDeConsultaController',['$scope','$controller','$routeParams',function($scope,$controller,$routeParams){
+    .controller('InformacaoDeConsultaController',['$scope','$controller','$stateParams',function($scope,$controller,$stateParams){
         
-        /* é um decorator que torna comum as variaveis de escopo do ConsultasController controller  */
+        var keep=true;
+        var index;
+        /* é um decorator que torna comum as variaveis de escopo do ConsultasController */
         $controller('ConsultasController',{$scope: $scope});
-        $scope.detalhes = $scope.consultas[0];
-        console.log($routeParams);
+
+        angular.forEach($scope.consultas,function(value,key){
+            if (keep)
+            {
+                if(value.id==$stateParams.id)
+                {
+                    index = key;
+                    /*break*/
+                    keep=false;
+                }
+            }
+        });
+       $scope.detalhes = $scope.consultas[index];
     }])
 
     .controller('LoginController', function($scope, $http, $state, $ionicPopup, $ionicUser, $ionicPush) {
@@ -125,6 +138,19 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             });
         };
 
-    }) 
+    })
+    
+    .controller('AgendamentoController', function($scope,$http){
+        /* Dados de teste */
+        $http.get('js/Model/agendamento.json').success(function(data){
+            $scope.agendamento = data;
+            console.log($scope.agendamento);
+        });
+        
+    })
 
+    .controller('agendamentoEspecialidade', ['$scope','$stateParams',function($scope,$stateParams){
+            /* Dados de teste */
+           console.log($stateParams.especialidade);
+    }])
 ;

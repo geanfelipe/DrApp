@@ -1,18 +1,17 @@
 <ion-view can-swipe-back="true">
-	<ion-nav-title>Consultas Agendadas <a class="ion-plus-round" ></a></ion-nav-title>
+	<ion-nav-title>Consultas Agendadas <a title="Agendar" class="ion-plus-round" href="#/agendar"></a></ion-nav-title>
 
     <ion-content>
 
-       <div class="logo"><img src="img/unimed.png"></div>
+       	<div class="logo"><img src="img/unimed.png"></div>
 
-        <ion-item ng-repeat="consulta in consultas" >
+       	<ion-list>
+	        <ion-item ng-repeat="consulta in consultas" >
 
-            <h2><a href="consultas/{{consulta.id}}">{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}}  - {{consulta.local}}</a></h2>
-            <p>{{consulta.medico}} , {{consulta.especialidade}}</p>
-            <p>{{consulta.endereco}}</p><p>{{consulta.bairro}}</p>
+	            <h2><a href="#consultas/{{consulta.id}}">{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}}  - {{consulta.local}}</a></h2>
+	            <p>{{consulta.medico}} , {{consulta.especialidade}}</p>
+	            <p>{{consulta.endereco}}</p><p>{{consulta.bairro}}</p>
 
-        </ion-item>
-        
-    </ion-content>
-
+	        </ion-item>
+	    </ion-list>
 </ion-view>
