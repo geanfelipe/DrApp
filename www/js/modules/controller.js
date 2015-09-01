@@ -149,8 +149,69 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         
     })
 
-    .controller('agendamentoEspecialidade', ['$scope','$stateParams',function($scope,$stateParams){
+    .controller('agendamentoEspecialidade', ['$scope','$stateParams','$http',function($scope,$stateParams,$http){
+        
+        $scope.dataMarcada = null;
+        /* Dados de teste */
+        $http.get('js/Model/agendamento.json').success(function(data){
+            var keep = true;
+            $scope.especialidade = $stateParams.especialidade;
+
+            angular.forEach(data.especialidades,function(value,key){
+                if (keep)
+                {
+                    if(value.nome==$scope.especialidade)
+                    {
+                        console.log(key,value);
+                        $scope.datas = value.datas;
+                        /*break*/
+                        keep=false;
+
+                    }
+                }
+            });
+            
+        });
+    }])
+
+    .controller('AgendamentoEscolhaDeMedico', ['$scope','$stateParams',function($scope,$stateParams){
+            
+            $scope.especialidade=$stateParams.especialidade;
+            $scope.horario  = $stateParams.horario;
+            $scope.dataMarcada = $stateParams.dataMarcada;
+
+            /*declaracoes*/            
+            $scope.medico = null;
+
             /* Dados de teste */
-           console.log($stateParams.especialidade);
+            $scope.data = [
+                {
+                    hospital:"Hospital da Unimed",
+                    medicos:
+                    [
+                        {nome:"Dr. Fernando Lisboa"},
+                        {nome:"Dr. João Roberto"}
+                    ]
+                },
+                {
+                    hospital:"Hospital do Coração",
+                    medicos:
+                    [
+                        {nome:"Dra. Rossana Silva"},
+                        {nome:"Dr. Fulano Garcia"}
+                    ]
+                }
+            ];
+
+            $scope.formarJson = function(localDeAtendimento){
+                $scope.obj = {
+                    especialidade: $scope.especialidade,
+                    data: $scope.dataMarcada,
+                    horario : $scope.horario,
+                    medico: $scope.medico,
+                    local: localDeAtendimento
+                };
+                console.log($scope.obj);
+            };
     }])
 ;

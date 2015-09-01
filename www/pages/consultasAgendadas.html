@@ -5,13 +5,12 @@
 
        	<div class="logo"><img src="img/unimed.png"></div>
 
-       	<ion-list>
-	        <ion-item ng-repeat="consulta in consultas" >
-
-	            <h2><a href="#consultas/{{consulta.id}}">{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}}  - {{consulta.local}}</a></h2>
+       	<div class="list">
+	        <a class="item" ng-repeat="consulta in consultas" href="#consultas/{{consulta.id}}" >
+	            <h3 class="detalhe">{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}}  - {{consulta.local}}</h3>
 	            <p>{{consulta.medico}} , {{consulta.especialidade}}</p>
 	            <p>{{consulta.endereco}}</p><p>{{consulta.bairro}}</p>
 
-	        </ion-item>
-	    </ion-list>
+	        </a>
+	    </div>
 </ion-view>

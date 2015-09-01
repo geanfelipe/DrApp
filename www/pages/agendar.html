@@ -11,12 +11,12 @@
   			</label>
   			<button class="button button-clear">Cancel</button>
 		</div>
-		<ion-list>
-  			<ion-item ng-repeat="especialidade in agendamento.especialidades | filter:query">
+		<div class="list" >
+  			<a class="item" ng-repeat="especialidade in agendamento.especialidades | filter:query" href="#/agendar/{{especialidade.nome}}">
     			{{especialidade.nome}}
-    			<a href="#/agendar/{{especialidade.nome}}" class="ion-chevron-right" ></a>
-  			</ion-item>
-		</ion-list>
+    			<i class="ion-chevron-right" ></i>
+  			</a>
+		</div>
 	
 	</ion-content>	
 

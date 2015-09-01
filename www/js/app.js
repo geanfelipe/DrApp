@@ -38,6 +38,11 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push','ng
                 templateUrl: "pages/agendamentoEspecialidade.html",
                 controller: "agendamentoEspecialidade"
             })
+            .state('agendamentoEscolhaMedico', {
+                url: '/agendar/:especialidade/:dataMarcada/:horario', 
+                templateUrl: "pages/medicosDisponiveis.html",
+                controller: "AgendamentoEscolhaDeMedico"
+            })
         ;
 
         $urlRouterProvider.otherwise("/");

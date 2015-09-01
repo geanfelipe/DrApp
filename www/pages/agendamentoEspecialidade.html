@@ -1,0 +1,85 @@
+<ion-view can-swipe-back="true">
+	<ion-nav-title>Agendamento : {{especialidade}}</ion-nav-title>
+	
+	<ion-content>
+		<div class="logo"><img src="img/unimed.png"></div>
+
+		
+		<div class="list">
+
+			<div class="item item-divider">
+					<label class="item item-input custom-input-label item-stacked-label ">
+				     	<input type="date" name="input" ng-model="dataMarcada"/>
+			      	</label>
+			</div>
+			<div>
+				<h5 class="detalhe">  Horários {{dataMarcada | date:'dd.MM.yyyy'}} </h5>
+			</div>
+			
+			<a class="item" href="#/agendar/{{especialidade}}/{{dataMarcada | date:'dd.MM.yyyy'}}/8">
+				<div>
+					08:00 - 08:59
+					<h3 class="detalhe">3 disponíveis</h3>
+					<i class="ion-chevron-right"></i>
+				</div>
+			</a>
+			<a class="item" href="#/agendar/{{especialidade}}/{{dataMarcada | date:'dd.MM.yyyy'}}/9">
+				<div>
+					09:00 - 09:59
+					<h3 class="detalhe">2 disponíveis</h3>
+					<i  class="ion-chevron-right"></i>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+   				<div>
+					10:00 - 10:59<h3 class="indisponivel">indisponíveis</h3>
+				</div>		
+			</a>
+			<a class="item" href="#/agendar/{{especialidade}}/{{dataMarcada | date:'dd.MM.yyyy'}}/11">
+				<div>
+					11:00 - 11:59<h3 class="detalhe">2 disponíveis</h3>
+					<i  class="ion-chevron-right"></i>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+				<div>
+					12:00 - 12:59 <h3 class="indisponivel">indisponíveis</h3>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+				<div>
+					13:00 - 13:59 <h3 class="indisponivel">indisponíveis</h3>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+				<div>
+					14:00 - 14:59 <h3 class="indisponivel">indisponíveis</h3>
+				</div>
+			</a>
+			<a class="item" href="#/agendar/{{especialidade}}/{{dataMarcada | date:'dd.MM.yyyy'}}/16">
+				<div>
+					15:00 - 16:59 <h3 class="detalhe">4 disponíveis</h3>
+					<i  class="ion-chevron-right"></i>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+				<div>
+					17:00 - 17:59 <h3 class="indisponivel">indisponíveis</h3>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+				<div>
+					18:00 - 18:59 <h3 class="indisponivel">indisponíveis</h3>
+				</div>
+			</a>
+			<a class="item" href="#" data-tap-disabled="true">
+				<div>
+					19:00 - 19:59 <h3 class="indisponivel">indisponíveis</h3>
+				</div>
+			</a>
+
+		</div>
+  			
+	</ion-content>	
+
+</ion-view>
