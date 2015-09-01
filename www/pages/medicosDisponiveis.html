@@ -1,0 +1,19 @@
+<ion-view can-swipe-back="true">
+	<ion-nav-title>Agendamento : {{especialidade}},{{horario}}:00 as {{horario}}:59</ion-nav-title>
+	
+	<ion-content>
+		<div class="logo"><img src="img/unimed.png"></div>
+
+		<div  ng-repeat="info in data">
+			<div class="detalhe item item-divider">{{info.hospital}}</div>
+			
+			<div class="list">
+		        <a class="item" href="#" ng-trim="true" ng-repeat="medico in info.medicos" ng-model="medico" > <!-- ng-click="formarJson({{medico.nome)" --> 
+			        {{medico.nome}} <i class="ion-chevron-right" ></i>
+		        </a>
+		    </div>
+
+	    </div>
+	</ion-content>
+
+</ion-view>
