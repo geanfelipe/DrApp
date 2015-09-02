@@ -1,10 +1,28 @@
 <ion-view can-swipe-back="true">
-	<ion-nav-title>Confirmar Agendamento <i class="ion-ios-checkmark-empty"></i></ion-nav-title>
-	
+	<ion-nav-title>Confirmar Agendamento <a href="#/"><i class="ion-ios-checkmark-outline"></i></a></ion-nav-title>
 	<ion-content>
 		<div class="logo"><img src="img/unimed.png"></div>
 
-		
+		<div class="list">
+			<div class="item">
+				<p>Especialidade</p>
+				<h2 class="detalhe">{{obj.especialidade}}</h2>
+			</div>
+			<div class="item">
+				<p>Data / Hora</p>
+				<h2 class="detalhe">{{obj.data | date:'dd.MM.yyyy'}} , das {{obj.horario}}:00 as {{obj.horario}}:59</h2>
+			</div>
+			<div class="item">
+				<p>Local de Atendimento</p>
+				<h2 class="detalhe">{{obj.local}}</h2>
+				<p>{{obj.endereco}} - {{obj.bairro}}</p>
+			</div>
+			<div class="item">
+				<p>Médico</p>
+				<h2 class="detalhe">{{obj.medico}}</h2>
+			</div>
+			
+		</div>
 	</ion-content>
 
 </ion-view>

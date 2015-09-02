@@ -10,7 +10,9 @@
 	    		<input type="search" placeholder="Filtrar" ng-model="query">
   			</label>
   			<button class="button button-clear">Cancel</button>
+  			
 		</div>
+
 		<div class="list" >
   			<a class="item" ng-repeat="especialidade in agendamento.especialidades | filter:query" href="#/agendar/{{especialidade.nome}}">
     			{{especialidade.nome}}

@@ -31,7 +31,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     .controller('ConsultasController',function ($scope) {
     
-            //Dados de teste
+            /*Dados de teste*/
             $scope.consultas = [{
                 id: "1",
                 data: "21/09/2015",
@@ -144,7 +144,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         /* Dados de teste */
         $http.get('js/Model/agendamento.json').success(function(data){
             $scope.agendamento = data;
-            console.log($scope.agendamento);
         });
         
     })
@@ -162,7 +161,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 {
                     if(value.nome==$scope.especialidade)
                     {
-                        console.log(key,value);
                         $scope.datas = value.datas;
                         /*break*/
                         keep=false;
@@ -170,7 +168,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                     }
                 }
             });
-            
+
         });
     }])
 
@@ -181,7 +179,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             $scope.dataMarcada = $stateParams.dataMarcada;
 
             /*declaracoes*/            
-            $scope.medico = null;
+            $scope.medicoSelecionado = null;
+            $scope.obj = null;
 
             /* Dados de teste */
             $scope.data = [
@@ -203,15 +202,27 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 }
             ];
 
-            $scope.formarJson = function(localDeAtendimento){
+            $scope.formarJson = function(nomeMedico,hospital){
                 $scope.obj = {
                     especialidade: $scope.especialidade,
                     data: $scope.dataMarcada,
                     horario : $scope.horario,
-                    medico: $scope.medico,
-                    local: localDeAtendimento
+                    medico: nomeMedico.nome,
+                    local: hospital,
+                    endereco:"Rua Odilon Gomes De Lima ",
+                    bairro:"Capim Macio - 59000-370",
                 };
                 console.log($scope.obj);
             };
+
+            $scope.getJson =function(){
+                return $scope.obj;
+            }
+    }])
+
+    .controller('ConfirmarAgendamento',['$scope','$stateParams',function($scope,$stateParams){
+        
+        $scope.obj = JSON.parse($stateParams.json);
+        
     }])
 ;
