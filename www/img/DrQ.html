@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://localhost:8100/#/desmarcar-consulta/1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <meta charset="ISO-8859-1">
+    <script>
+      // Injected Ionic Go To URL Live Reload Plugin
+      window.LiveReloadPlugin_IonicGoToUrl = (function() {
+        var GOTO_KEY = "__ionic_goto_url__";
+        var HISTORY_GO_KEY = "__ionic_history_go__";
+        var GoToUrlPlugin = function(window, host) {
+          this.window = window;
+          this.host = host;
+        }
+        GoToUrlPlugin.identifier = "__ionic_goto_url__";
+        GoToUrlPlugin.version = "1.0";
+        GoToUrlPlugin.prototype.reload = function(path) {
+          try {
+            if(path) {
+              if(path.indexOf(GOTO_KEY) === 0) {
+                this.window.document.location = path.replace(GOTO_KEY, "");
+                return true;
+              }
+              if(path.indexOf(HISTORY_GO_KEY) === 0) {
+                this.window.document.history.go( parseInt(path.replace(HISTORY_GO_KEY, ""), 10));
+                return true;
+              }
+            }
+          } catch(e) {
+            console.log(e);
+          }
+          return false;
+        };
+        return GoToUrlPlugin;
+      })();
+    </script>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>DrQ</title>
+
+        <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+        <link href="css/ionic.app.css" rel="stylesheet">
+        -->
+
+        <!-- Bibliotecas -->
+        <link rel="stylesheet" href="http://localhost:8100/lib/ionic/css/ionic.css">
+
+        <script src="./DrQ_files/ionic.bundle.js"></script>
+        <script src="./DrQ_files/ionic-core.js"></script>
+        <script src="./DrQ_files/ionic-core.js"></script>
+        <script src="./DrQ_files/ionic-push.js"></script>
+        <script src="./DrQ_files/ng-cordova.js"></script>
+
+        <script src="./DrQ_files/moment-with-locales.min.js"></script>
+
+        <!-- Modulos Angular -->
+        <script src="./DrQ_files/controller.js"></script>
+        <script src="./DrQ_files/calendar.js"></script>
+
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="./DrQ_files/cordova.js"></script>
+
+        <!-- Meu app -->
+        <link rel="stylesheet/less" href="http://localhost:8100/css/calendar-style.less"><style type="text/css" id="less:css-calendar-style">.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+calendar {
+  float: left;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background: white;
+  width: 100%;
+  border: solid 1px #cccccc;
+  margin-bottom: 10px;
+}
+calendar > div.header {
+  float: left;
+  width: 100%;
+  background: #2875c7;
+  height: 40px;
+  color: white;
+}
+calendar > div.header > * {
+  height: 40px;
+  line-height: 40px !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+calendar > div.header > i {
+  float: left;
+  width: 40px;
+  font-size: 1.125em;
+  font-weight: bold;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0 10px;
+  cursor: pointer;
+}
+calendar > div.header > i.ion-ios-arrow-back {
+  text-align: left;
+}
+calendar > div.header > i.ion-ios-arrow-forward {
+  text-align: right;
+  margin-left: -40px;
+}
+calendar > div.header > span {
+  float: left;
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-left: 50px;
+  margin-left: -40px;
+  text-align: center;
+  padding-right: 40px;
+  color: inherit;
+}
+calendar > div.week {
+  float: left;
+  width: 100%;
+  border-top: solid 1px #cccccc;
+}
+calendar > div.week:first-child {
+  border-top: none;
+}
+calendar > div.week > span.day {
+  float: left;
+  width: 14.28571429%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border-left: solid 1px #cccccc;
+  font-size: 0.75em;
+  text-align: center;
+  height: 30px;
+  line-height: 30px !important;
+  display: inline-block;
+  vertical-align: middle;
+  background: white;
+  cursor: pointer;
+  color: black;
+}
+calendar > div.week > span.day:first-child {
+  border-left: none;
+}
+calendar > div.week > span.day.today {
+  background: #E3F2FF;
+}
+calendar > div.week > span.day.different-month {
+  color: #C0C0C0;
+}
+calendar > div.week > span.day.selected {
+  background: #2875c7;
+  color: white;
+}
+calendar > div.week.names > span {
+  color: #2875c7;
+  font-weight: bold;
+}
+</style>
+        <link rel="stylesheet/less" href="http://localhost:8100/css/style.less"><style type="text/css" id="less:css-style">/* Empty. Add your own CSS if you like */
+.cal-month-box .cal-month-day {
+  height: 4em;
+}
+.cal-month-box .cal-cell {
+  min-height: 40pt;
+}
+.logo {
+  width: 10%;
+  padding: 1px;
+  margin: 0;
+}
+.detalhe {
+  color: #1b6a1b;
+}
+.indisponivel {
+  color: #9c9c9c;
+}
+</style>
+
+        <script src="./DrQ_files/app.js"></script>
+
+        <!-- Compilar o Less. Este cÃ³digo sÃ³ deve permanecer aqui durante o desenvolvimento! -->
+        <script src="./DrQ_files/less.min.js"></script>
+
+    </head>
+    <body ng-app="starter" class="grade-a platform-browser platform-win32 platform-ready">
+
+
+        <ion-nav-bar class="nav-bar-container" nav-bar-transition="ios" nav-bar-direction="none" nav-swipe="">
+            <ion-nav-back-button class="hide"></ion-nav-back-button>
+        <div class="nav-bar-block" nav-bar="cached"><ion-header-bar align-title="center" class="bar bar-header disable-user-behavior"><button ng-click="$ionicGoBack()" class="button back-button hide buttons header-item">
+                &nbsp;<i class="ion-ios-arrow-back"></i> Voltar&nbsp;
+            </button><div class="title title-center header-item"></div></ion-header-bar></div><div class="nav-bar-block" nav-bar="active"><ion-header-bar align-title="center" class="bar bar-header disable-user-behavior"><button ng-click="$ionicGoBack()" class="button back-button hide buttons header-item">
+                &nbsp;<i class="ion-ios-arrow-back"></i> Voltar&nbsp;
+            </button><div class="title title-center header-item"><span class="nav-bar-title"> Cancelar Consulta <a ng-click="opcoes()" class="ion-ios-checkmark-empty"></a></span></div></ion-header-bar></div></ion-nav-bar> 
+
+       <ion-nav-view class="view-container" nav-view-transition="ios" nav-view-direction="none" nav-swipe=""><ion-view can-swipe-back="true" class="pane" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+	<ion-nav-title class="hide"></ion-nav-title>
+
+	<ion-content class="scroll-content ionic-scroll  has-header"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+		<div class="logo"><img src="./DrQ_files/unimed.png"></div>
+
+			<label class="item item-checkbox ng-valid" ng-model="remarcar" style=""><div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle"><input type="checkbox" ng-model="remarcar" class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i></div><div class="item-content disable-pointer-events" ng-transclude=""><span>Consulta precisa ser remarcada</span></div></label>
+			<label class="item item-checkbox ng-valid" ng-model="necessario" style=""><div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle"><input type="checkbox" ng-model="necessario" class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i></div><div class="item-content disable-pointer-events" ng-transclude=""><span>Consulta não é mais necessária</span></div></label>
+			<label class="item item-checkbox ng-valid" ng-model="outro" style=""><div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle"><input type="checkbox" ng-model="outro" class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i></div><div class="item-content disable-pointer-events" ng-transclude=""><span>Outro(s) motivo(s)</span></div></label>
+<br>
+		<div ng-show="outro" class="row ng-hide" style="">
+			<div class="col">
+				<label class="item item-input">
+			    	<textarea style="margin-top: 0px; margin-bottom: 0px; height: 76px;" placeholder="Comments"></textarea>
+			  	</label>
+			</div>
+		</div>
+	</div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-content>
+</ion-view></ion-nav-view>
+
+    
+<script>//<![CDATA[
+document.write('<script src="//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1"><\/script>')
+//]]></script><script src="./DrQ_files/livereload.js"></script>
+
+
+<div class="backdrop"></div></body><object id="9a9839a8-eb58-adb8-99d8-9b9339b3b9a2" width="0" height="0" type="application/gas-events-cef"></object></html>

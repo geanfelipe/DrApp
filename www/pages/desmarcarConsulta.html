@@ -1,0 +1,19 @@
+<ion-view can-swipe-back="true">
+	<ion-nav-title> Cancelar Consulta <a ng-click="opcoes()" class="ion-ios-checkmark-empty"></a></ion-nav-title>
+
+	<ion-content>
+		<div class="logo"><img src="img/unimed.png"></div>
+
+			<ion-checkbox ng-model="remarcar">Consulta precisa ser remarcada</ion-checkbox>
+			<ion-checkbox ng-model="necessario">Consulta não é mais necessária</ion-checkbox>
+			<ion-checkbox ng-model="outro" >Outro(s) motivo(s)</ion-checkbox>
+<br/>
+		<div ng-show="outro" class="row">
+			<div class="col">
+				<label class="item item-input">
+			    	<textarea style="margin-top: 0px; margin-bottom: 0px; height: 76px;"placeholder="Comments"></textarea>
+			  	</label>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
