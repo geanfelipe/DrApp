@@ -21,36 +21,41 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push','ng
             .state('consultas', {
                 url: '/consultas',
                 templateUrl: "pages/consultasAgendadas.html",
-                controller: "ConsultasController"
+                controller: "ConsultasCtrl"
             })
             .state('detalhesConsulta', {
                 url: '/consultas/:id', 
                 templateUrl: "pages/detalhesConsultas.html",
-                controller: "InformacaoDeConsultaController"
+                controller: "InformacaoDeConsultaCtrl"
             })
             .state('agendamento', {
                 url: '/agendar', 
                 templateUrl: "pages/agendar.html",
-                controller: "AgendamentoController"
+                controller: "AgendamentoCtrl"
             })
             .state('agendamentoEspecialidade', {
                 url: '/agendar/:especialidade', 
                 templateUrl: "pages/agendamentoEspecialidade.html",
-                controller: "agendamentoEspecialidade"
+                controller: "agendamentoEspecialidadeCtrl"
             })
             .state('agendamentoEscolhaMedico', {
                 url: '/agendar/:especialidade/:dataMarcada/:horario', 
                 templateUrl: "pages/medicosDisponiveis.html",
-                controller: "AgendamentoEscolhaDeMedico"
+                controller: "AgendamentoEscolhaDeMedicoCtrl"
             })
             .state('confirmarAgendamento', {
                 url: '/confirmar/:json', 
                 templateUrl: "pages/confirmarAgendamento.html",
-                controller: "ConfirmarAgendamento"
+                controller: "ConfirmarAgendamentoCtrl"
+            })
+            .state('desmarcarConsulta', {
+                url: '/desmarcar-consulta/:id', 
+                templateUrl: "pages/desmarcarConsulta.html",
+                controller: "desmarcarConsultaCtrl"
             })
         ;
 
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/consultas");
 
     })
 

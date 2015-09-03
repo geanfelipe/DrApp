@@ -29,7 +29,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     })
 
-    .controller('ConsultasController',function ($scope) {
+    .controller('ConsultasCtrl',function ($scope) {
     
             /*Dados de teste*/
             $scope.consultas = [{
@@ -59,12 +59,12 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
            
         })
 
-    .controller('InformacaoDeConsultaController',['$scope','$controller','$stateParams',function($scope,$controller,$stateParams){
+    .controller('InformacaoDeConsultaCtrl',['$scope','$controller','$stateParams','$ionicPopup',function($scope,$controller,$stateParams,$ionicPopup){
         
         var keep=true;
         var index;
         /* é um decorator que torna comum as variaveis de escopo do ConsultasController */
-        $controller('ConsultasController',{$scope: $scope});
+        $controller('ConsultasCtrl',{$scope: $scope});
 
         angular.forEach($scope.consultas,function(value,key){
             if (keep)
@@ -78,6 +78,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             }
         });
        $scope.detalhes = $scope.consultas[index];
+
+        
     }])
 
     .controller('LoginController', function($scope, $http, $state, $ionicPopup, $ionicUser, $ionicPush) {
@@ -140,7 +142,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     })
     
-    .controller('AgendamentoController', function($scope,$http){
+    .controller('AgendamentoCtrl', function($scope,$http){
         /* Dados de teste */
         $http.get('js/Model/agendamento.json').success(function(data){
             $scope.agendamento = data;
@@ -148,7 +150,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         
     })
 
-    .controller('agendamentoEspecialidade', ['$scope','$stateParams','$http',function($scope,$stateParams,$http){
+    .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http',function($scope,$stateParams,$http){
         
         $scope.dataMarcada = null;
         /* Dados de teste */
@@ -172,7 +174,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         });
     }])
 
-    .controller('AgendamentoEscolhaDeMedico', ['$scope','$stateParams',function($scope,$stateParams){
+    .controller('AgendamentoEscolhaDeMedicoCtrl', ['$scope','$stateParams',function($scope,$stateParams){
             
             $scope.especialidade=$stateParams.especialidade;
             $scope.horario  = $stateParams.horario;
@@ -220,9 +222,53 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             }
     }])
 
-    .controller('ConfirmarAgendamento',['$scope','$stateParams',function($scope,$stateParams){
+    .controller('ConfirmarAgendamentoCtrl',['$scope','$stateParams',function($scope,$stateParams){
         
         $scope.obj = JSON.parse($stateParams.json);
         
+    }])
+
+    .controller('desmarcarConsultaCtrl',['$scope','$stateParams','$ionicPopup','$state','$controller',function($scope,$stateParams,$ionicPopup,$state,$controller){
+        
+        $controller('ConsultasCtrl',{$scope: $scope});
+        
+        var keep = true;
+        var id = $stateParams.id; 
+        var indice; 
+
+        angular.forEach($scope.consultas,function(value,key){
+                if (keep)
+                {
+                    if(value.id==id)
+                    {
+                        indice = key;    
+                        /*break*/
+                        keep=false;
+                    }
+                }
+         });
+        console.log(indice);
+
+        $scope.opcoes = function(){
+            $scope.data = {}
+
+            $ionicPopup.show({
+                title:"Cancelar Consulta",
+                scope: $scope,
+                buttons: [
+                {
+                    text: 'Sim',
+                    onTap : function(){
+                        $scope.consultas.splice(indice);
+                        $state.go('consultas');
+                    }
+                },
+                  { text: 'Não'},
+                ]
+                }).then(function() {
+                  console.log("feito");
+                });
+            console.log($scope.consultas);
+        };
     }])
 ;
