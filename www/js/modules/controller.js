@@ -9,6 +9,15 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         moment.locale('pt-br');
 
     })
+    .run(function($rootScope) {
+        /*
+            Receive emitted message and broadcast it.
+            Event names must be distinct or browser will blow up!
+        */
+        $rootScope.$on('handleEmit', function(event, args) {
+            $rootScope.$broadcast('handleBroadcast', args);
+        })
+    })
 
     .controller('HomeController', function ($scope, $state, $rootScope) {
 
@@ -29,7 +38,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     })
 
-    .controller('ConsultasCtrl',function ($scope) {
+    .controller('ConsultasCtrl',function ($scope,$rootScope) {
     
             /*Dados de teste*/
             $scope.consultas = [{
@@ -56,7 +65,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 especialidade:"Clinico geral",
                 logo:"img/unimed.png"
             }];
-           
+            var msg = 'ola';
+            $rootScope.$broadcast('msgid', msg);
         })
 
     .controller('InformacaoDeConsultaCtrl',['$scope','$controller','$stateParams','$ionicPopup',function($scope,$controller,$stateParams,$ionicPopup){
@@ -126,9 +136,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                     $state.go("home");
 
                 });
-
-
-
             }, function (data) {
 
                 //Fracasso
@@ -259,8 +266,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 {
                     text: 'Sim',
                     onTap : function(){
-                        $scope.consultas.splice(indice);
-                        $state.go('consultas');
+                        // $scope.consultas.splice(indice);
+                        // $state.go('consultas');
                     }
                 },
                   { text: 'Não'},
@@ -268,7 +275,11 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 }).then(function() {
                   console.log("feito");
                 });
-            console.log($scope.consultas);
         };
+        // var msg = 'EITA';
+        $scope.$on('msgid', function(event, msg) {
+            msg = 'EITA';
+            console.log(msg);
+        });
     }])
 ;
