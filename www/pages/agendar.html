@@ -15,8 +15,14 @@
 
 		<div class="list" >
   			<a class="item" ng-repeat="especialidade in agendamento.especialidades | filter:query" href="#/agendar/{{especialidade.nome}}">
-    			{{especialidade.nome}}
-    			<i class="ion-chevron-right" ></i>
+    			<div  class="row">
+    				<div class="col-90">
+		    			{{especialidade.nome}}
+	    			</div>
+	    			<div class="col-10">
+		    			<i class="ion-chevron-right" ></i>
+	    			</div>
+	    		</div>
   			</a>
 		</div>
 	

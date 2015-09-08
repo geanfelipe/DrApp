@@ -8,8 +8,11 @@
 			<div class="detalhe item item-divider">{{info.hospital}}</div>
 			
 			<div class="list">
-		        <a class="item" href="#/confirmar/{{obj}}" ng-trim="true" ng-repeat="medico in info.medicos" ng-click="formarJson(medico,info.hospital)"> 
-			        {{medico.nome}} <i class="ion-chevron-right" ></i>
+		        <a class="item" href="#/confirmar/{{obj}}" ng-trim="true" ng-repeat="medico in info.medicos" ng-click="formarJson(medico,info.hospital)">
+		        	<div class="row">
+			        	<div class="col-90">{{medico.nome}}</div>
+				        <div class=""><i class="ion-chevron-right" ></i></div>
+			        </div>
 		        </a>
 		    </div>
 	    </div>

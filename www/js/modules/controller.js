@@ -65,8 +65,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 especialidade:"Clinico geral",
                 logo:"img/unimed.png"
             }];
-            var msg = 'ola';
-            $rootScope.$broadcast('msgid', msg);
         })
 
     .controller('InformacaoDeConsultaCtrl',['$scope','$controller','$stateParams','$ionicPopup',function($scope,$controller,$stateParams,$ionicPopup){
@@ -254,7 +252,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                     }
                 }
          });
-        console.log(indice);
 
         $scope.opcoes = function(){
             $scope.data = {}
@@ -267,7 +264,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                     text: 'Sim',
                     onTap : function(){
                         // $scope.consultas.splice(indice);
-                        // $state.go('consultas');
+                        $state.go('consultas');
                     }
                 },
                   { text: 'Não'},
@@ -276,10 +273,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                   console.log("feito");
                 });
         };
-        // var msg = 'EITA';
-        $scope.$on('msgid', function(event, msg) {
-            msg = 'EITA';
-            console.log(msg);
-        });
+        
     }])
 ;
