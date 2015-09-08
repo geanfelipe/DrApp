@@ -229,7 +229,30 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     .controller('ConfirmarAgendamentoCtrl',['$scope','$stateParams',function($scope,$stateParams){
         
+        /*json final para mandar para o servidor*/
         $scope.obj = JSON.parse($stateParams.json);
+
+
+        $scope.opcoes = function(){
+            $scope.data = {}
+
+            $ionicPopup.show({
+                title:"Confirmar consulta",
+                scope: $scope,
+                buttons: [
+                {
+                    text: 'Sim',
+                    onTap : function(){
+                        // $scope.consultas.splice(indice);
+                        $state.go('consultas');
+                    }
+                },
+                  { text: 'Não'},
+                ]
+                }).then(function() {
+                  console.log("feito");
+                });
+        };
         
     }])
 
