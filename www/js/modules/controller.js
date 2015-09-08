@@ -227,7 +227,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             }
     }])
 
-    .controller('ConfirmarAgendamentoCtrl',['$scope','$stateParams',function($scope,$stateParams){
+    .controller('ConfirmarAgendamentoCtrl',['$scope','$state','$stateParams','$ionicPopup',function($scope,$state$,$stateParams,$ionicPopup){
         
         /*json final para mandar para o servidor*/
         $scope.obj = JSON.parse($stateParams.json);
