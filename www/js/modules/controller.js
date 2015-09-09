@@ -65,7 +65,9 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 especialidade:"Clinico geral",
                 logo:"img/unimed.png"
             }];
-        })
+
+        $scope.$emit('teste', 'Data to send');
+    })
 
     .controller('InformacaoDeConsultaCtrl',['$scope','$controller','$stateParams','$ionicPopup',function($scope,$controller,$stateParams,$ionicPopup){
         
@@ -227,7 +229,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             }
     }])
 
-    .controller('ConfirmarAgendamentoCtrl',['$scope','$state','$stateParams','$ionicPopup',function($scope,$state$,$stateParams,$ionicPopup){
+    .controller('ConfirmarAgendamentoCtrl',['$scope','$state','$stateParams','$ionicPopup',function($scope,$state,$stateParams,$ionicPopup){
         
         /*json final para mandar para o servidor*/
         $scope.obj = JSON.parse($stateParams.json);
@@ -256,7 +258,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         
     }])
 
-    .controller('desmarcarConsultaCtrl',['$scope','$stateParams','$ionicPopup','$state','$controller',function($scope,$stateParams,$ionicPopup,$state,$controller){
+    .controller('desmarcarConsultaCtrl',['$scope','$stateParams','$ionicPopup','$state','$controller','$rootScope',function($scope,$stateParams,$ionicPopup,$state,$controller,$rootScope){
         
         $controller('ConsultasCtrl',{$scope: $scope});
         
@@ -277,20 +279,23 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
          });
 
         $scope.opcoes = function(){
+            $scope.$on('teste', function (event, data) {
+                console.log(data); // 'Some data'
+            });
+
             $scope.data = {}
 
             $ionicPopup.show({
                 title:"Cancelar Consulta",
                 scope: $scope,
                 buttons: [
-                {
+                 {
                     text: 'Sim',
                     onTap : function(){
-                        // $scope.consultas.splice(indice);
                         $state.go('consultas');
                     }
-                },
-                  { text: 'Não'},
+                 },
+                 {text: 'Não' }
                 ]
                 }).then(function() {
                   console.log("feito");

@@ -1,12 +1,17 @@
 <ion-view can-swipe-back="true">
-	<ion-nav-title> Cancelar Consulta <a ng-click="opcoes()" class="ion-ios-checkmark-empty"></a></ion-nav-title>
+	<ion-nav-title> 
+		<div class="row">
+			<div class="col col-75 col-offset-10">Cancelar Consulta</div>
+			<div class="col "> <a ng-click="opcoes()" class="ion-ios-checkmark-outline"></a></div>
+		</div>
+	</ion-nav-title>
 
 	<ion-content>
 		<div class="logo"><img src="img/unimed.png"></div>
 
-			<ion-checkbox ng-model="remarcar">Consulta precisa ser remarcada</ion-checkbox>
-			<ion-checkbox ng-model="necessario">Consulta não é mais necessária</ion-checkbox>
-			<ion-checkbox ng-model="outro" >Outro(s) motivo(s)</ion-checkbox>
+			<ion-checkbox ng-change="necessario=false;outro=false" ng-model="remarcar">Consulta precisa ser remarcada</ion-checkbox>
+			<ion-checkbox ng-change="remarcar=false;outro=false" ng-model="necessario">Consulta não é mais necessária</ion-checkbox>
+			<ion-checkbox ng-change="necessario=false;remarcar=false" ng-model="outro" >Outro(s) motivo(s)</ion-checkbox>
 <br/>
 		<div ng-show="outro" class="row">
 			<div class="col">
