@@ -8,14 +8,50 @@
 		<div class="list">
 
 			<div class="item item-divider">
-					<label class="item item-input custom-input-label item-stacked-label ">
+					<!-- <label class="item item-input custom-input-label item-stacked-label ">
 				     	<input type="date" name="input" ng-model="dataMarcada"/>
-			      	</label>
+			      	</label> -->
+			      	<div class="row" style="background-color: #FFFFFF;padding-top: 0px;padding-bottom: 0px;">
+				      	<div class="row col-33 col-center" ng-click="ola()" >
+				      		<div class="col col-50" style="color:#0000FF; border-bottom: 1px solid #aaa;">
+				      			<div >{{ano}}</div>
+				      		</div>
+				      		<div class="col col-10" style="border-bottom: 1px solid #aaa;">
+				      			<a class="ion-arrow-down-b"></a>
+				      		</div>
+				      	</div>
+				      	<div class="row col-33 col-bottom">
+				      		<div class="col col-75" style="color:#0000FF; border-bottom: 1px solid #aaa;">
+				      			<div >{{mes}}</div>
+				      		</div>
+				      		<div class="col col-10" style="border-bottom: 1px solid #aaa;">
+				      			<a class="ion-arrow-down-b"></a>
+				      		</div>
+				      	</div>
+				      	<div class="row col-33 col-bottom" ng-click="escolherDia()">
+				      		<div class="col col-50" style="color:#0000FF; border-bottom: 1px solid #aaa">
+				      			<div >{{dia}}</div>
+				      		</div>
+				      		<div class="col col-10" style="border-bottom: 1px solid #aaa;">
+				      			<a class="ion-arrow-down-b"></a>
+				      		</div>
+				      	</div>
+			      	</div>
+			      		<!-- <div class="col">
+			      			<input type="text" ng-model="mes"/>
+			      			<a class="ion-arrow-down-b"></a>
+			      		</div>
+			      		<div class="col">
+			      			<input type="text" ng-model="dia"/><a class="ion-arrow-down-b"></a>
+			      		</div>
+			      	</div> -->
+
+
 			</div>
 			<div>
 				<div class="row">
 					<div class="col col-75">
-						<h5 class="detalhe"> Horários </h5>
+						<h5 class="detalhe"> Horários {{dia}}/{{mes}}/{{ano}}  {{dia1}}</h5>
 					</div>
 				</div>
 			</div>
