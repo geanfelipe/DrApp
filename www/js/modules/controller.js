@@ -157,8 +157,41 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         
     })
 
-    .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http',function($scope,$stateParams,$http){
-        
+    .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http','$ionicPopup',function($scope,$stateParams,$http,$ionicPopup){
+        $scope.ano = "2015";
+        $scope.mes= "Setembro";
+        $scope.dia = "14"
+        $scope.dia1 = "11"
+
+        $scope.years = ['2015','2016','2017'];
+        $scope.months = ['Setembro','Outubro','Novembro','Dezembro'];
+        $scope.days = [];
+
+        for (var i = 14 - 1; i <= 31; i++) {
+            $scope.days.push(i);
+        };
+
+        $scope.escolherDia = function(){
+            $scope.data = {}
+
+            $ionicPopup.show({
+                title:"",
+                templateUrl: '/pages/selectData.html',
+                scope: $scope,
+                buttons: [
+                 {
+                    text: 'Sim',
+                    onTap : function(){
+                        
+                    }
+                 },
+                 {text: 'Não' }
+                ]
+                }).then(function() {
+                  console.log($scope.dia1);
+                });
+        }
+
         $scope.dataMarcada = null;
         /* Dados de teste */
         $http.get('js/Model/agendamento.json').success(function(data){
@@ -279,9 +312,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
          });
 
         $scope.opcoes = function(){
-            $scope.$on('teste', function (event, data) {
-                console.log(data); // 'Some data'
-            });
 
             $scope.data = {}
 
