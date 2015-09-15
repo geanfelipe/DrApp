@@ -158,41 +158,104 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
     })
 
     .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http','$ionicPopup',function($scope,$stateParams,$http,$ionicPopup){
-        $scope.ano = "2015";
-        $scope.mes= "Setembro";
-        $scope.dia = "14"
-        $scope.dia1 = "11"
+        $scope.calendario = {ano :"2015", mes : "Setembro",dia : ""}
 
         $scope.years = ['2015','2016','2017'];
         $scope.months = ['Setembro','Outubro','Novembro','Dezembro'];
+        
         $scope.days = [];
 
-        for (var i = 14 - 1; i <= 31; i++) {
+        for (var i = 27; i <= 31; i++) {
             $scope.days.push(i);
         };
 
         $scope.escolherDia = function(){
-            $scope.data = {}
+
+            $scope.escolherData={};
 
             $ionicPopup.show({
                 title:"",
-                templateUrl: '/pages/selectData.html',
+                template:'<ion-radio ng-repeat="day in days" ng-model="escolherData.dia" ng-value="'+"'{{day}}'"+'">{{day}}</ion-radio>',
+                // templateUrl: '/pages/selectData.html',
                 scope: $scope,
                 buttons: [
                  {
-                    text: 'Sim',
-                    onTap : function(){
-                        
-                    }
+                    text: 'Cancelar',
                  },
-                 {text: 'Não' }
+                 {
+                    text: 'Ok',
+                    onTap : function(e){
+                        if(!$scope.escolherData.dia){
+                            e.preventDefault();
+                        }else{
+                            $scope.calendario.dia = $scope.escolherData.dia;
+                        }
+                    }
+                 }
                 ]
-                }).then(function() {
-                  console.log($scope.dia1);
                 });
-        }
+       };
 
-        $scope.dataMarcada = null;
+       $scope.escolherMes = function(){
+
+            $scope.escolherData={};
+
+            $ionicPopup.show({
+                title:"",
+                template:'<ion-radio ng-repeat="month in months" ng-model="escolherData.mes" ng-value="'+"'{{month}}'"+'">{{month}}</ion-radio>',
+                // templateUrl: '/pages/selectData.html',
+                scope: $scope,
+                buttons: [
+                 {
+                    text: 'Cancelar',
+                 },
+                 {
+                    text: 'Ok',
+                    onTap : function(e){
+                        if(!$scope.escolherData.mes){
+                            e.preventDefault();
+                        }else{
+                            $scope.calendario.mes = $scope.escolherData.mes;
+                        }
+                    }
+                 }
+                ]
+                });
+       };
+        $scope.escolherAno = function(){
+
+            $scope.escolherData={};
+
+            $ionicPopup.show({
+                title:"",
+                template:'<ion-radio ng-repeat="year in years" ng-model="escolherData.ano" ng-value="'+"'{{year}}'"+'">{{year}}</ion-radio>',
+                // templateUrl: '/pages/selectData.html',
+                scope: $scope,
+                buttons: [
+                 {
+                    text: 'Cancelar',
+                 },
+                 {
+                    text: 'Ok',
+                    onTap : function(e){
+                        if(!$scope.escolherData.ano){
+                            e.preventDefault();
+                        }else{
+                            $scope.calendario.ano = $scope.escolherData.ano;
+                        }
+                    }
+                 }
+                ]
+                });
+       };
+
+        var data = function(){
+            var meses={'Setembro':'09','Outubro':'10','Novembro':'11','Dezembro':'12'};
+            return meses[$scope.calendario.mes]+'/'+$scope.calendario.dia+'/'+$scope.calendario.ano;
+        };
+
+        $scope.dataMarcada = new Date(data());
+
         /* Dados de teste */
         $http.get('js/Model/agendamento.json').success(function(data){
             var keep = true;

@@ -12,17 +12,17 @@
 				     	<input type="date" name="input" ng-model="dataMarcada"/>
 			      	</label> -->
 			      	<div class="row" style="background-color: #FFFFFF;padding-top: 0px;padding-bottom: 0px;">
-				      	<div class="row col-33 col-center" ng-click="ola()" >
+				      	<div class="row col-33 col-center" ng-click="escolherAno()" >
 				      		<div class="col col-50" style="color:#0000FF; border-bottom: 1px solid #aaa;">
-				      			<div >{{ano}}</div>
+				      			<div >{{calendario.ano}}</div>
 				      		</div>
 				      		<div class="col col-10" style="border-bottom: 1px solid #aaa;">
 				      			<a class="ion-arrow-down-b"></a>
 				      		</div>
 				      	</div>
-				      	<div class="row col-33 col-bottom">
+				      	<div class="row col-33 col-bottom" ng-click="escolherMes()">
 				      		<div class="col col-75" style="color:#0000FF; border-bottom: 1px solid #aaa;">
-				      			<div >{{mes}}</div>
+				      			<div >{{calendario.mes}}</div>
 				      		</div>
 				      		<div class="col col-10" style="border-bottom: 1px solid #aaa;">
 				      			<a class="ion-arrow-down-b"></a>
@@ -30,7 +30,7 @@
 				      	</div>
 				      	<div class="row col-33 col-bottom" ng-click="escolherDia()">
 				      		<div class="col col-50" style="color:#0000FF; border-bottom: 1px solid #aaa">
-				      			<div >{{dia}}</div>
+				      			<div >{{calendario.dia}}</div>
 				      		</div>
 				      		<div class="col col-10" style="border-bottom: 1px solid #aaa;">
 				      			<a class="ion-arrow-down-b"></a>
@@ -51,7 +51,7 @@
 			<div>
 				<div class="row">
 					<div class="col col-75">
-						<h5 class="detalhe"> Horários {{dia}}/{{mes}}/{{ano}}  {{dia1}}</h5>
+						<h5 class="detalhe"> Horários {{dataMarcada | date:'dd.MM.yyyy'}}</h5>
 					</div>
 				</div>
 			</div>
