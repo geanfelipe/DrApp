@@ -159,7 +159,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http','$ionicPopup',function($scope,$stateParams,$http,$ionicPopup){
 
-        $scope.calendario = {ano :"2015", mes : "Setembro",dia : "27"};
+        $scope.calendario = {ano :"2015", mes : "",dia : ""};
         $scope.years = ['2015','2016','2017'];
         $scope.months = ['Setembro','Outubro','Novembro','Dezembro'];
         $scope.days = [];
@@ -330,10 +330,9 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
     }])
 
     .controller('ConfirmarAgendamentoCtrl',['$scope','$state','$stateParams','$ionicPopup',function($scope,$state,$stateParams,$ionicPopup){
-        
+
         /*json final para mandar para o servidor*/
         $scope.obj = JSON.parse($stateParams.json);
-
 
         $scope.opcoes = function(){
             $scope.data = {}
@@ -355,7 +354,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                   console.log("feito");
                 });
         };
-        
+
     }])
 
     .controller('desmarcarConsultaCtrl',['$scope','$stateParams','$ionicPopup','$state','$controller','$rootScope',function($scope,$stateParams,$ionicPopup,$state,$controller,$rootScope){

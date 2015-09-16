@@ -2,7 +2,7 @@
 	<ion-nav-title>
 		<div class="title title-center header-item">
 			<span class="nav-bar-title">
-				Confirmar Agendamento <a  ui-sref="consultas" class="ion-ios-checkmark-outline" ></a>
+				Confirmar Agendamento <a  ui-sref="consultas" ng-click="post()" class="ion-ios-checkmark-outline" ></a>
 			</span>
 		</div>
 	</ion-nav-title>
@@ -12,20 +12,21 @@
 
 		<div class="list">
 			<div class="item">
-				<p>Especialidade</p>
+				<h3>Especialidade</h3>
 				<h2 class="detalhe" style="font-weight: bold">{{obj.especialidade}}</h2>
 			</div>
 			<div class="item">
-				<p>Data / Hora</p>
+				<h3>Data / Hora</h3>
 				<h2 class="detalhe" style="font-weight: bold" >{{obj.data | date:'dd.MM.yyyy'}} , das {{obj.horario}}:00 as {{obj.horario}}:59</h2>
 			</div>
 			<div class="item">
-				<p>Local de Atendimento</p>
+				<h3>Local de Atendimento</h3>
 				<h2 class="detalhe" style="font-weight: bold">{{obj.local}}</h2>
-				<p>{{obj.endereco}} - {{obj.bairro}}</p>
+				<h2 class="detalhe" style="font-weight: bold">{{obj.endereco}}</h2>
+				<h2 class="detalhe" style="font-weight: bold">{{obj.bairro}}</h2>
 			</div>
 			<div class="item">
-				<p>Médico</p>
+				<h3>Médico</h3>
 				<h2 class="detalhe" style="font-weight: bold">{{obj.medico}}</h2>
 			</div>
 			
