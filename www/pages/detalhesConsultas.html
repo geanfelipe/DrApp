@@ -1,30 +1,36 @@
 <ion-view can-swipe-back="true">
-	<ion-nav-title>Detalhes De Agendamento</ion-nav-title>
+	<ion-nav-title>
+		<div class="title title-center header-item">
+			<span class="nav-bar-title">
+				Detalhes De Agendamento
+			</span>
+		</div>
+	</ion-nav-title>
 
 	<ion-content>
-		<img ng-src="{{detalhes.logo}}">
+		<div class="row logo"> <img class="col-50 col-offset-25 logo" src="img/unimed.png" ></div>
 		<div class="list">
 			<div class="item">
 				<h3>Especialidade</h3>	
-				<h2 class="detalhe">{{detalhes.especialidade}}</h2>
+				<h2 class="detalhe" style="font-weight: bold ">{{detalhes.especialidade}}</h2>
 			</div>
 			<div class="item">
 				<h3>Data / Hora</h3>
-				<h2 class="detalhe">{{detalhes.data}} , {{detalhes.horarioInicial}}Hr</h2>
+				<h2 class="detalhe" style="font-weight: bold ">{{detalhes.data}} , {{detalhes.horarioInicial}}Hr</h2>
 			</div>
 			<div class="item">
 				<h3>Local de Atendimento</h3>	
-				<h2 class="detalhe">{{detalhes.local}}</h2>
-				<h2 class="detalhe">{{detalhes.endereco}}</h2>
-				<h2 class="detalhe">{{detalhes.bairro}}</h2>
+				<h2 class="detalhe" style="font-weight: bold" >{{detalhes.local}}</h2>
+				<h2 class="detalhe" style="font-weight: bold ">{{detalhes.endereco}}</h2>
+				<h2 class="detalhe" style="font-weight: bold ">{{detalhes.bairro}}</h2>
 			</div>
 			<div class="item">
 				<h3>Médico</h3>	
-				<h2 class="detalhe">{{detalhes.medico}}</h2>
+				<h2 class="detalhe" style="font-weight: bold ">{{detalhes.medico}}</h2>
 			</div>
 			<div class="item">
 				<h3>Tempo Estimado Até Atendimento</h3>	
-				<h2 class="detalhe">15 Horas, 50 min</h2>
+				<h2 class="detalhe" style="font-weight: bold ">15 Horas, 50 min</h2>
 			</div>
 		</div>
 

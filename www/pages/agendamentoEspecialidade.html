@@ -1,8 +1,14 @@
 <ion-view can-swipe-back="true">
-	<ion-nav-title>Agendamento : {{especialidade}}</ion-nav-title>
+	<ion-nav-title>
+		<div class="title title-center header-item">
+			<span class="nav-bar-title">
+				Agendamento : {{especialidade}}
+			</span>
+		</div>
+	</ion-nav-title>
 	
 	<ion-content>
-		<div class="logo"><img src="img/unimed.png"></div>
+		<div class="row logo"> <img class="col-50 col-offset-25 logo" src="img/unimed.png" ></div>
 
 		
 		<div class="list">
@@ -51,7 +57,7 @@
 			<div>
 				<div class="row">
 					<div class="col col-75">
-						<h5 class="detalhe"> Horários {{dataMarcada | date:'dd.MM.yyyy'}}</h5>
+						<h5 class="detalhe"> Horários</h5>
 					</div>
 				</div>
 			</div>

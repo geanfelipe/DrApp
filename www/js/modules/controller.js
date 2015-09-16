@@ -158,11 +158,10 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
     })
 
     .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http','$ionicPopup',function($scope,$stateParams,$http,$ionicPopup){
-        $scope.calendario = {ano :"2015", mes : "Setembro",dia : ""}
 
+        $scope.calendario = {ano :"2015", mes : "Setembro",dia : "27"};
         $scope.years = ['2015','2016','2017'];
         $scope.months = ['Setembro','Outubro','Novembro','Dezembro'];
-        
         $scope.days = [];
 
         for (var i = 27; i <= 31; i++) {
@@ -176,7 +175,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
             $ionicPopup.show({
                 title:"",
                 template:'<ion-radio ng-repeat="day in days" ng-model="escolherData.dia" ng-value="'+"'{{day}}'"+'">{{day}}</ion-radio>',
-                // templateUrl: '/pages/selectData.html',
                 scope: $scope,
                 buttons: [
                  {
@@ -190,10 +188,9 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                         }else{
                             $scope.calendario.dia = $scope.escolherData.dia;
                         }
-                    }
-                 }
-                ]
-                });
+                    }                
+                }]
+            });
        };
 
        $scope.escolherMes = function(){
@@ -220,6 +217,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                     }
                  }
                 ]
+                }).then(function(){
+
                 });
        };
         $scope.escolherAno = function(){
@@ -248,13 +247,18 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 ]
                 });
        };
+       
+       /*a cada modificacao altera o estado do model datamarcada*/
+       /*a funcao data retorna uma data com o mes no valor inteiro em vez de string*/
+       $scope.$watch(function(scope){
+            var data = function(){
+                var meses={'Setembro':'09','Outubro':'10','Novembro':'11','Dezembro':'12'};
+                return meses[$scope.calendario.mes]+'/'+$scope.calendario.dia+'/'+$scope.calendario.ano;
+            };
+            $scope.dataMarcada = new Date(data());
+        });
 
-        var data = function(){
-            var meses={'Setembro':'09','Outubro':'10','Novembro':'11','Dezembro':'12'};
-            return meses[$scope.calendario.mes]+'/'+$scope.calendario.dia+'/'+$scope.calendario.ano;
-        };
-
-        $scope.dataMarcada = new Date(data());
+       
 
         /* Dados de teste */
         $http.get('js/Model/agendamento.json').success(function(data){

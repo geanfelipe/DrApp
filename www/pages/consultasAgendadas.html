@@ -1,21 +1,23 @@
 <ion-view can-swipe-back="true">
 	<ion-nav-title>
-		<div class="row">
-			<div class="col col-75 col-offset-10">Consultas Agendadas</div>
-			<div class="col col-offset-10"><a title="Agendar" class="ion-plus-round" href="#/agendar"></a></div>
+		
+		<div class="title title-center header-item">
+			<span class="nav-bar-title">
+				Consultas Agendadas<a title="Agendar" class="ion-plus-round" href="#/agendar"></a>
+			</span>
 		</div>
+
 	</ion-nav-title>
 
     <ion-content>
 
-       	<div class="logo"><img src="img/unimed.png"></div>
+       	<div class="row logo"> <img class="col-50 col-offset-25 logo" src="img/unimed.png" ></div>
 
        	<div class="list">
 	        <a class="item" ng-repeat="consulta in consultas" href="#consultas/{{consulta.id}}" >
-	            <h2 class="detalhe">{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}}  - {{consulta.local}}</h2>
+	            <h2 class="detalhe" >{{consulta.data}},{{consulta.horarioInicial}} às {{consulta.horarioTermino}} - {{consulta.local}}</h2>
 	            <p>{{consulta.medico}} , {{consulta.especialidade}}</p>
 	            <p>{{consulta.endereco}}</p><p>{{consulta.bairro}}</p>
-
 	        </a>
 	    </div>
 </ion-view>
