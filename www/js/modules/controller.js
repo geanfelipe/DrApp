@@ -2,7 +2,7 @@
  * Created by Desenvolvimento on 04/08/2015.
  */
 
-angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.core', 'ionic.service.push'])
+angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.core', 'ionic.service.push','uiGmapgoogle-maps'])
 
     .config(function () {
 
@@ -335,8 +335,12 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     .controller('ConfirmarAgendamentoCtrl',['$scope','$state','$stateParams','$ionicPopup',function($scope,$state,$stateParams,$ionicPopup){
 
+
+        var meses = {'09':'Setembro','10':'Outubro','11':'Novembro','12':'Dezembro'}
         /*json final para mandar para o servidor*/
         $scope.obj = JSON.parse($stateParams.json);
+        /*formatando a data-> data chega: 01.02.15 entao transforma-se para 01/fevereiro/2015 */
+        $scope.obj.data = $scope.obj.data.split('.')[0]+"/"+(meses[$scope.obj.data.split('.')[1]])+"/"+$scope.obj.data.split('.')[2];
 
         $scope.opcoes = function(){
             $scope.data = {}
@@ -404,4 +408,8 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         
     }])
 
+    .controller('MapCtrl', function($scope, $ionicLoading, $compile) {
+      $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+      
+    });
 ;
