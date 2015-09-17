@@ -159,7 +159,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
 
     .controller('agendamentoEspecialidadeCtrl', ['$scope','$stateParams','$http','$ionicPopup',function($scope,$stateParams,$http,$ionicPopup){
 
-        $scope.calendario = {ano :"2015", mes : "",dia : ""};
+        $scope.calendario = {ano :"2015", mes : "Setembro",dia : "28"};
         $scope.years = ['2015','2016','2017'];
         $scope.months = ['Setembro','Outubro','Novembro','Dezembro'];
         $scope.days = [];
@@ -181,7 +181,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                     text: 'Cancelar',
                  },
                  {
-                    text: 'Ok',
+                    text: 'Ok',                    
                     onTap : function(e){
                         if(!$scope.escolherData.dia){
                             e.preventDefault();
@@ -196,7 +196,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
        $scope.escolherMes = function(){
 
             $scope.escolherData={};
-
+            
             $ionicPopup.show({
                 title:"",
                 template:'<ion-radio ng-repeat="month in months" ng-model="escolherData.mes" ng-value="'+"'{{month}}'"+'">{{month}}</ion-radio>',
@@ -256,6 +256,10 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
                 return meses[$scope.calendario.mes]+'/'+$scope.calendario.dia+'/'+$scope.calendario.ano;
             };
             $scope.dataMarcada = new Date(data());
+            $('.popup-body').addClass('calendarioPopup-body');
+            $('.popup-head').addClass('calendarioPopup-head');
+
+            console.log(data());
         });
 
        
@@ -399,4 +403,5 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         };
         
     }])
+
 ;
