@@ -1,5 +1,12 @@
-<ion-view view-title="Google Maps V3 example">      
-    <ion-content data-tap-disabled="true">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-    </ion-content>
+<ion-view>
+	<ion-nav-title>
+		<div class="title title-center header-item">
+			<span class="nav-bar-title">
+				Mapa
+			</span>
+		</div>
+	</ion-nav-title>
+    <ion-content ng-init="init()" >
+    	<div id="map" style=" width: 100%;height: 100%;" data-tap-disabled="true"></div>
+	</ion-content>
 </ion-view>

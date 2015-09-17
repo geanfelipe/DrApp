@@ -2,7 +2,7 @@
  * Created by Desenvolvimento on 04/08/2015.
  */
 
-angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.core', 'ionic.service.push','uiGmapgoogle-maps'])
+angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.core', 'ionic.service.push'])
 
     .config(function () {
 
@@ -39,7 +39,6 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
     })
 
     .controller('ConsultasCtrl',function ($scope,$rootScope) {
-    
             /*Dados de teste*/
             $scope.consultas = [{
                 id: "1",
@@ -164,7 +163,7 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         $scope.months = ['Setembro','Outubro','Novembro','Dezembro'];
         $scope.days = [];
 
-        for (var i = 27; i <= 31; i++) {
+        for (var i = 17; i <= 31; i++) {
             $scope.days.push(i);
         };
 
@@ -408,8 +407,29 @@ angular.module('controller', ['ui.router', 'calendar', 'ionic', 'ionic.service.c
         
     }])
 
-    .controller('MapCtrl', function($scope, $ionicLoading, $compile) {
-      $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
-      
-    });
+    .controller('MapCtrl', function($scope, $ionicLoading) {
+            $scope.init = function(){
+                var myLatlng = new google.maps.LatLng(37.3000, -120.4833);/**/
+         
+                var mapOptions = {
+                    center: myLatlng,
+                    zoom: 16,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+         
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+         
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+                    var myLocation = new google.maps.Marker({
+                        position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                        map: map,
+                        title: "My Location"
+                    });
+                });
+         
+                $scope.map = map;
+                console.log($scope.map);
+            }
+    })
 ;
